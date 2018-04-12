@@ -1,5 +1,6 @@
 import random
 import string
+from sets import Set
 
 WORDLIST_FILENAME = "palavras.txt"
 
@@ -51,6 +52,13 @@ def getAvailableLetters():
 
     return available
 
+def lettersNumber(word, guesses):
+    differentLetters = Set(list(word))
+    quantityLetters = len(differentLetters)
+    if quantityLetters > guesses:
+        loadWords()
+    print "The word has: ", quantityLetters, "different letters."
+
 class Hangman():
 
     _guesses = 8
@@ -65,6 +73,8 @@ class Hangman():
         print 'I am thinking of a word that is', len(self._secretWord), ' letters long.'
         print '-------------'
 
+
+        quantityLetters = lettersNumber(self._secretWord, self._guesses)
         while  isWordGuessed(self._secretWord, self._lettersGuessed) == False and self._guesses >0:
             print 'You have ', self._guesses, 'guesses left.'
 
@@ -113,7 +123,7 @@ class Hangman():
         if isWordGuessed(self._secretWord, self._lettersGuessed) == True:
             print 'Congratulations, you won!'
         else:
-            print 'Sorry, you ran out of guesses. The word was ', _secretWord, '.'
+            print 'Sorry, you ran out of guesses. The word was ', self._secretWord, '.'
 
 
 
