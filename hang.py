@@ -22,13 +22,6 @@ def loadWords():
 
 def isWordGuessed(secretWord, lettersGuessed):
     secretLetters = []
-
-#    for letter in secretWord:
-#        if letter in secretLetters:
-#            secretLetters.append(letter)
-#        else:
-#            pass
-
     for letter in secretWord:
         if letter in lettersGuessed:
             pass
@@ -46,7 +39,6 @@ def getGuessedWord():
 
 def getAvailableLetters():
     import string
-    # 'abcdefghijklmnopqrstuvwxyz'
     available = string.ascii_lowercase
 
 
@@ -55,9 +47,8 @@ def getAvailableLetters():
 def lettersNumber(word, guesses):
     differentLetters = Set(list(word))
     quantityLetters = len(differentLetters)
-    if quantityLetters > guesses:
-        loadWords()
     print "The word has: ", quantityLetters, "different letters."
+
 
 class Hangman():
 
